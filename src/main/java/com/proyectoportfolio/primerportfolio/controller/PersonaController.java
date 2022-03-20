@@ -48,12 +48,16 @@ public class PersonaController {
     public Persona editPersona (@PathVariable Long id,
                                 @RequestParam("nombre") String nuevoNombre,
                                 @RequestParam ("apellido") String nuevoApellido,
-                                @RequestParam ("edad") int nuevaEdad){
+                                @RequestParam ("edad") int nuevaEdad,
+                                @RequestParam ("foto_perfil")String nuevoFoto_perfil,
+                                @RequestParam ("foto_fondo")String nuevoFoto_fondo){
         
         Persona perso = interPersona.findPersona(id);
         perso.setApellido(nuevoApellido);
         perso.setNombre(nuevoNombre);
         perso.setEdad(nuevaEdad);
+        perso.setFoto_perfil(nuevoFoto_perfil);
+        perso.setFoto_fondo(nuevoFoto_fondo);
         
         interPersona.savePersona(perso);
         return perso;

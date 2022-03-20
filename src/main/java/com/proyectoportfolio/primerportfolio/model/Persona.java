@@ -25,16 +25,19 @@ public class Persona implements Serializable {
     private String nombre;
     private String apellido;
     private int edad;
-   
+    private String foto_perfil;
+    private String foto_fondo;
+    
     public Persona() {
     
 }
-    public Persona (String nombre,String apellido, int edad ){
+    public Persona (String nombre,String apellido, int edad, String foto_perfil, String foto_fondo ){
         
       
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-                
+        this.foto_perfil = foto_perfil;
+        this.foto_fondo = foto_fondo;          
     }
 }

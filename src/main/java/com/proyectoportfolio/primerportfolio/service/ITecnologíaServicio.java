@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.proyectoportfolio.primerportfolio.service;
 
-/**
- *
- * @author curci
- */
+
+import com.proyectoportfolio.primerportfolio.model.Tecnología;
+import java.util.List;
+
+
 public interface ITecnologíaServicio {
-    
+    public List<Tecnología> getTecnologías ();
+    public void saveTecnología (Tecnología tecno);
+    public void deleteTecnología (Long id);
+    public Tecnología findTecnología (Long id);
 }
