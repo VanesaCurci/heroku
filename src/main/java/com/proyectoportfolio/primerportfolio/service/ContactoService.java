@@ -1,13 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.proyectoportfolio.primerportfolio.service;
 
-/**
- *
- * @author curci
- */
-public class ContactoService {
-    
+import com.proyectoportfolio.primerportfolio.model.Contacto;
+import com.proyectoportfolio.primerportfolio.repository.ContactoRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class ContactoService implements IContactoService{
+    @Autowired
+    private ContactoRepository contaRepository;
+
+    @Override
+    public List<Contacto> getContactos() {
+      List<Contacto> listaContactos = contaRepository.findAll();
+          return listaContactos;    
+    }
+
+    @Override
+    public void saveContacto(Contacto conta) {
+        contaRepository.save(conta);
+    }
+
+    @Override
+    public void deleteContacto(Long id) {
+        contaRepository.deleteById(id);
+    }
+
+    @Override
+    public Contacto findContacto(Long id) {
+        Contacto conta = contaRepository.findById(id).orElse(null);
+        return conta;
+    }
 }
+ 
+
