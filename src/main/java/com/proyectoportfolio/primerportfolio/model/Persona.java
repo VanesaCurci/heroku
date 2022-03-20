@@ -40,4 +40,6 @@ public class Persona implements Serializable {
         this.foto_perfil = foto_perfil;
         this.foto_fondo = foto_fondo;          
     }
+
+    
 }
