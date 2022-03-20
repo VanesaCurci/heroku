@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.proyectoportfolio.primerportfolio.repository;
 
-/**
- *
- * @author curci
- */
-public interface ProvinciaRepository {
+import com.proyectoportfolio.primerportfolio.model.Provincia;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProvinciaRepository extends JpaRepository<Provincia,Long>{
     
 }
