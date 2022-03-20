@@ -1,11 +1,11 @@
 
 package com.proyectoportfolio.primerportfolio.repository;
 
-import com.proyectoportfolio.primerportfolio.model.Proyectos;
+import com.proyectoportfolio.primerportfolio.model.Proyecto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProyectosRepository extends JpaRepository<Proyectos,Long>{
+public interface ProyectoRepository extends JpaRepository<Proyecto,Long>{
     
 }

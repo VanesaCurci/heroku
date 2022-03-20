@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.proyectoportfolio.primerportfolio.service;
 
-/**
- *
- * @author curci
- */
+import com.proyectoportfolio.primerportfolio.model.Localidad;
+import java.util.List;
+
+
 public interface ILocalidadService {
-    
+    public List<Localidad> getLocalidades();
+    public void saveLocalidad (Localidad loca);
+    public void deleteLocalidad (Long id);
+    public Localidad findLocalidad (Long id);
+     
 }

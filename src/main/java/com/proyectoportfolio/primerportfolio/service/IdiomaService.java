@@ -8,6 +8,6 @@ package com.proyectoportfolio.primerportfolio.service;
  *
  * @author curci
  */
-public class IdiomasService {
+public class IdiomaService {
     
 }

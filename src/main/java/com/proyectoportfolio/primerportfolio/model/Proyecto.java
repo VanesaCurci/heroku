@@ -11,17 +11,17 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Proyectos implements Serializable {
+public class Proyecto implements Serializable {
   @Id
   @GeneratedValue(strategy=GenerationType.SEQUENCE)
   private Long id;
   private String título;
   private String descripción;
   
-  public Proyectos() {
+  public Proyecto() {
     
 }
-  public Proyectos(String título, String descripción){
+  public Proyecto(String título, String descripción){
       this.título = título;
       this.descripción = descripción;
   }

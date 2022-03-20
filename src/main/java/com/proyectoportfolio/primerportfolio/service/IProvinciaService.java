@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.proyectoportfolio.primerportfolio.service;
 
-/**
- *
- * @author curci
- */
+import com.proyectoportfolio.primerportfolio.model.Provincia;
+import java.util.List;
+
+
 public interface IProvinciaService {
-    
+   public List<Provincia> getProvincias();
+   public void saveProvincia (Provincia provi);
+   public void deleteProvincia (Long id);
+   public Provincia findProvincia(Long id);
 }

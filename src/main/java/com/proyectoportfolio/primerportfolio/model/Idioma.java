@@ -11,17 +11,17 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Idiomas implements Serializable {
+public class Idioma implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     private String nombre;
     private Long nivel;
     
-    public Idiomas() {
+    public Idioma() {
     
 }
-    public Idiomas (String nombre, Long nivel){
+    public Idioma (String nombre, Long nivel){
         this.nombre = nombre;
         this.nivel = nivel;   
     }
