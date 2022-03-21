@@ -4,10 +4,12 @@ package com.proyectoportfolio.primerportfolio.model;
 
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,8 @@ public class Tecnología implements Serializable {
     private String nombre;
     private String imagen;
     
+    @ManyToMany(mappedBy = "tecnologías")
+    private Set<Persona> personas;
     
     public Tecnología() {
     

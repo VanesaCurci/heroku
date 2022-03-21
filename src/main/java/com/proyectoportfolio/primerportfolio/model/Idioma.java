@@ -2,10 +2,12 @@
 package com.proyectoportfolio.primerportfolio.model;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +19,9 @@ public class Idioma implements Serializable {
     private Long id;
     private String nombre;
     private Long nivel;
+    
+   @ManyToMany(mappedBy = "idiomas")
+   private Set<Persona> personas;
     
     public Idioma() {
     

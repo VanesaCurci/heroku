@@ -2,6 +2,7 @@
 package com.proyectoportfolio.primerportfolio.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToOne;
 
 
@@ -29,9 +30,9 @@ public class Contacto implements Serializable {
     private String linkedIn;
     private String instagram;
     
-   @JoinColumn(name = "id_persona")
-   @OneToOne(fetch = FetchType.LAZY)
-   private Persona persona;
+   @OneToOne(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true, 
+              fetch=FetchType.LAZY)
+    private Persona persona;
 
     
     public Contacto() {

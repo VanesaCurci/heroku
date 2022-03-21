@@ -3,12 +3,19 @@ package com.proyectoportfolio.primerportfolio.model;
 
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -33,10 +40,70 @@ public class Persona implements Serializable {
     private String foto_perfil;
     private String foto_fondo;
     
-    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, 
-              fetch=FetchType.LAZY)
-    private Contacto contacto;
- 
+   @JoinColumn(name = "id_contacto")
+   @OneToOne(fetch = FetchType.LAZY)
+   private Contacto contacto;
+   
+   @ManyToOne
+   @JoinColumn(name = "localidad_id")
+   private Localidad localidad;
+   
+   @ManyToMany( cascade = {
+       CascadeType.PERSIST,
+       CascadeType.MERGE
+   })
+   
+   @JoinTable(
+           name = "persona_tecnología",
+           joinColumns = {@JoinColumn(name = "persona_id")},
+           inverseJoinColumns = {@JoinColumn(name = "tecnología_id")}
+                 
+   )
+   
+   private Set<Tecnología>tecnologías;
+   
+   @ManyToMany( cascade = {
+       CascadeType.PERSIST,
+       CascadeType.MERGE
+   })
+   
+   @JoinTable(
+           name = "persona_proyecto",
+           joinColumns = {@JoinColumn(name = "persona_id")},
+           inverseJoinColumns = {@JoinColumn(name = "proyecto_id")}
+                 
+   )
+   
+   private Set<Proyecto>proyectos;
+   
+   @ManyToMany( cascade = {
+       CascadeType.PERSIST,
+       CascadeType.MERGE
+   })
+   
+   @JoinTable(
+           name = "persona_idioma",
+           joinColumns = {@JoinColumn(name = "persona_id")},
+           inverseJoinColumns = {@JoinColumn(name = "idioma_id")}
+                 
+   )
+   
+   private Set<Idioma>idiomas;
+   
+   @ManyToMany( cascade = {
+       CascadeType.PERSIST,
+       CascadeType.MERGE
+   })
+   
+   @JoinTable(
+           name = "persona_educación",
+           joinColumns = {@JoinColumn(name = "persona_id")},
+           inverseJoinColumns = {@JoinColumn(name = "educación_id")}
+                 
+   )
+   
+   private Set<Educación>educaciones;
+   
     
     public Persona() {
     
