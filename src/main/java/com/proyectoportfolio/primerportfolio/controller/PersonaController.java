@@ -39,20 +39,20 @@ public class PersonaController {
     }
     
     @DeleteMapping ("/personas/borrar/{id}")
-    public String deletePersona (@PathVariable Long id){
-        interPersona.deletePersona(id);
+    public String deletePersona (@PathVariable Long id_persona){
+        interPersona.deletePersona(id_persona);
         return "La persona fue eliminada correctamente";
     }
     
     @PutMapping ("personas/editar/{id}")
-    public Persona editPersona (@PathVariable Long id,
+    public Persona editPersona (@PathVariable Long id_persona,
                                 @RequestParam("nombre") String nuevoNombre,
                                 @RequestParam ("apellido") String nuevoApellido,
                                 @RequestParam ("edad") int nuevaEdad,
                                 @RequestParam ("foto_perfil")String nuevoFoto_perfil,
                                 @RequestParam ("foto_fondo")String nuevoFoto_fondo){
         
-        Persona perso = interPersona.findPersona(id);
+        Persona perso = interPersona.findPersona(id_persona);
         perso.setApellido(nuevoApellido);
         perso.setNombre(nuevoNombre);
         perso.setEdad(nuevaEdad);
