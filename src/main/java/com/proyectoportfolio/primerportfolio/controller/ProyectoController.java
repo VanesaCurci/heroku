@@ -32,6 +32,11 @@ public class ProyectoController {
         return interProyecto.getProyectos();
     }
     
+    @GetMapping("/proyectos/{id}")
+   public Proyecto findProyecto(@PathVariable Long id){
+   Proyecto proye = interProyecto.findProyecto(id);
+   return proye;}
+    
     @PostMapping ("/agregar/proyectos")
     public String createProyecto (@RequestBody Proyecto proye){
         interProyecto.saveProyecto(proye);

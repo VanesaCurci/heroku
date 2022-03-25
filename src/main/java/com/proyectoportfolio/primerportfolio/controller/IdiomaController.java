@@ -32,6 +32,11 @@ public class IdiomaController {
         return interIdioma.getIdiomas();
     }
     
+    @GetMapping("/idiomas/{id}")
+   public Idioma findIdioma(@PathVariable Long id){
+   Idioma idi = interIdioma.findIdioma(id);
+   return idi;}
+    
     @PostMapping ("/agregar/idiomas")
     public String createIdioma (@RequestBody Idioma idi){
         interIdioma.saveIdioma(idi);

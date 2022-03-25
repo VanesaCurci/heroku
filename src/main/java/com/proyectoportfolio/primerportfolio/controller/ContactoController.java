@@ -32,6 +32,11 @@ public class ContactoController {
         return interContacto.getContactos();
     }
     
+    @GetMapping("/contactos/{id}")
+   public Contacto findContacto(@PathVariable Long id){
+   Contacto conta = interContacto.findContacto(id);
+   return conta;}
+    
     @PostMapping ("/agregar/contactos")
     public String createContacto (@RequestBody Contacto conta){
         interContacto.saveContacto(conta);

@@ -32,6 +32,11 @@ public class ProvinciaController {
         return interProvincia.getProvincias();
     }
     
+    @GetMapping("/provincias/{id}")
+   public Provincia findProvincia(@PathVariable Long id){
+   Provincia provi = interProvincia.findProvincia(id);
+   return provi;}
+    
     @PostMapping ("/agregar/provincias")
     public String createProvincia (@RequestBody Provincia provi){
         interProvincia.saveProvincia(provi);

@@ -32,6 +32,11 @@ public class PersonaController {
         return interPersona.getPersonas();
     }
     
+    @GetMapping("/personas/{id}")
+    public Persona findPersona(@PathVariable Long id){
+    Persona perso = interPersona.findPersona(id);
+    return perso;}
+   
     @PostMapping ("/personas")
     public String createPersona (@RequestBody Persona perso){
         interPersona.savePersona(perso);

@@ -32,6 +32,12 @@ public class EducaciónController {
         return interEducación.getEducaciones();
     }
     
+    @GetMapping("/educación/{id}")
+    public Educación findEducación(@PathVariable Long id){
+        Educación edu = interEducación.findEducación(id);
+        return edu;
+    }
+    
     @PostMapping ("/agregar/educación")
     public String createEducación (@RequestBody Educación edu){
         interEducación.saveEducación(edu);

@@ -32,6 +32,11 @@ public class LocalidadController {
         return interLocalidad.getLocalidades();
     }
     
+    @GetMapping("/localidades/{id}")
+   public Localidad findLocalidad(@PathVariable Long id){
+   Localidad loca = interLocalidad.findLocalidad(id);
+   return loca;}
+    
     @PostMapping ("/agregar/localidades")
     public String createLocalidad (@RequestBody Localidad loca){
         interLocalidad.saveLocalidad(loca);

@@ -8,6 +8,7 @@ import com.proyectoportfolio.primerportfolio.service.ITecnologíaServicio;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class TecnologíaController {
     @Autowired
     private ITecnologíaServicio interTecnología;
@@ -32,7 +33,12 @@ public class TecnologíaController {
         return interTecnología.getTecnologías();
     }
     
-    @PostMapping ("/agregar/tecnologías")
+   @GetMapping("/tecnologías/{id}")
+   public Tecnología findTecnología(@PathVariable Long id){
+   Tecnología tecno = interTecnología.findTecnología(id);
+   return tecno;}
+   
+    @PostMapping ("/tecnologías")
     public String createTecnología (@RequestBody Tecnología tecno){
         interTecnología.saveTecnología(tecno);
         return "La tecnología fue creada correctamente";
@@ -44,7 +50,7 @@ public class TecnologíaController {
         return "La tecnología fue eliminada correctamente";
     }
     
-    @PutMapping ("tecnologías/editar/{id}")
+    @PutMapping ("/tecnologías/{id}")
     public Tecnología editTecnología (@PathVariable Long id,
                                 @RequestParam("nombre") String nuevoNombre,
                                 @RequestParam ("imagen") String nuevoImagen){
