@@ -3,6 +3,7 @@ package com.proyectoportfolio.primerportfolio.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ public class Tecnología implements Serializable {
     private String imagen;
     
     @ManyToMany(mappedBy = "tecnologías")
+    @JsonIgnoreProperties(value="tecnologías")
     private Set<Persona> personas;
     
     public Tecnología() {

@@ -8,6 +8,7 @@ import com.proyectoportfolio.primerportfolio.service.IProyectoService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProyectoController {
     @Autowired
     private IProyectoService interProyecto;
@@ -37,26 +38,26 @@ public class ProyectoController {
    Proyecto proye = interProyecto.findProyecto(id);
    return proye;}
     
-    @PostMapping ("/agregar/proyectos")
+    @PostMapping ("/proyectos")
     public String createProyecto (@RequestBody Proyecto proye){
         interProyecto.saveProyecto(proye);
         return "El proyecto fue creado correctamente";
     }
     
-    @DeleteMapping ("/proyectos/borrar/{id}")
+    @DeleteMapping ("/proyectos/{id}")
     public String deleteProyecto (@PathVariable Long id){
         interProyecto.deleteProyecto(id);
         return "El proyecto fue eliminado correctamente";
     }
     
-    @PutMapping ("proyectos/editar/{id}")
+    @PutMapping ("proyectos/{id}")
     public Proyecto editProyecto (@PathVariable Long id,
-                                @RequestParam("título") String nuevoTítulo,
-                                @RequestParam ("descripción") String nuevoDescripción){
+                                @RequestParam("titulo") String nuevoTítulo,
+                                @RequestParam ("descripcion") String nuevoDescripción){
         
         Proyecto proye = interProyecto.findProyecto(id);
-        proye.setTítulo(nuevoTítulo);
-        proye.setDescripción(nuevoDescripción);
+        proye.setTitulo(nuevoTítulo);
+        proye.setDescripcion(nuevoDescripción);
         
         
         interProyecto.saveProyecto(proye);

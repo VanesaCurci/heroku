@@ -1,6 +1,7 @@
 
 package com.proyectoportfolio.primerportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ public class Idioma implements Serializable {
     private Long nivel;
     
    @ManyToMany(mappedBy = "idiomas")
+   @JsonIgnoreProperties(value="idiomas")
    private Set<Persona> personas;
     
     public Idioma() {

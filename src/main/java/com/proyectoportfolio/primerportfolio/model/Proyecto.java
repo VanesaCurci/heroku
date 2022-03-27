@@ -1,6 +1,7 @@
 
 package com.proyectoportfolio.primerportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -17,18 +18,19 @@ public class Proyecto implements Serializable {
   @Id
   @GeneratedValue(strategy=GenerationType.SEQUENCE)
   private Long id;
-  private String título;
-  private String descripción;
+  private String titulo;
+  private String descripcion;
   
   @ManyToMany(mappedBy = "proyectos")
+  @JsonIgnoreProperties(value="proyectos")
   private Set<Persona> personas;
   
   public Proyecto() {
     
 }
-  public Proyecto(String título, String descripción){
-      this.título = título;
-      this.descripción = descripción;
+  public Proyecto(String titulo, String descripcion){
+      this.titulo = titulo;
+      this.descripcion = descripcion;
   }
   
 }

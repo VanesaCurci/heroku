@@ -1,6 +1,7 @@
 
 package com.proyectoportfolio.primerportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -21,6 +22,7 @@ public class Provincia implements Serializable {
     private String nombre;
     
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Localidad> localidades;
     
     public Provincia() {

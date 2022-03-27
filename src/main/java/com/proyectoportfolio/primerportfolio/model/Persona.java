@@ -2,6 +2,8 @@
 package com.proyectoportfolio.primerportfolio.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -40,14 +42,16 @@ public class Persona implements Serializable {
     private String foto_perfil;
     private String foto_fondo;
     
+    
    @JoinColumn(name = "id_contacto")
    @OneToOne(fetch = FetchType.LAZY)
    private Contacto contacto;
    
    @ManyToOne
    @JoinColumn(name = "localidad_id")
+   @JsonBackReference
    private Localidad localidad;
-   
+  
    @ManyToMany( cascade = {
        CascadeType.PERSIST,
        CascadeType.MERGE
@@ -59,7 +63,7 @@ public class Persona implements Serializable {
            inverseJoinColumns = {@JoinColumn(name = "tecnología_id")}
                  
    )
-   
+   @JsonIgnoreProperties(value="personas")
    private Set<Tecnología>tecnologías;
    
    @ManyToMany( cascade = {
@@ -73,7 +77,7 @@ public class Persona implements Serializable {
            inverseJoinColumns = {@JoinColumn(name = "proyecto_id")}
                  
    )
-   
+   @JsonIgnoreProperties(value="personas")
    private Set<Proyecto>proyectos;
    
    @ManyToMany( cascade = {
@@ -87,7 +91,7 @@ public class Persona implements Serializable {
            inverseJoinColumns = {@JoinColumn(name = "idioma_id")}
                  
    )
-   
+   @JsonIgnoreProperties(value="personas")
    private Set<Idioma>idiomas;
    
    @ManyToMany( cascade = {
@@ -101,7 +105,7 @@ public class Persona implements Serializable {
            inverseJoinColumns = {@JoinColumn(name = "educación_id")}
                  
    )
-   
+   @JsonIgnoreProperties(value="personas")
    private Set<Educación>educaciones;
    
     
@@ -120,3 +124,4 @@ public class Persona implements Serializable {
 
     
 }
+

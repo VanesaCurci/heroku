@@ -8,6 +8,7 @@ import com.proyectoportfolio.primerportfolio.service.IEducaciónService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class EducaciónController {
     @Autowired
     private IEducaciónService interEducación;
@@ -38,28 +39,28 @@ public class EducaciónController {
         return edu;
     }
     
-    @PostMapping ("/agregar/educación")
+    @PostMapping ("/educación")
     public String createEducación (@RequestBody Educación edu){
         interEducación.saveEducación(edu);
         return "Educación fue creada correctamente";
     }
     
-    @DeleteMapping ("/educación/borrar/{id}")
+    @DeleteMapping ("/educación/{id}")
     public String deleteEducación (@PathVariable Long id){
         interEducación.deleteEducación(id);
         return "Educación fue eliminada correctamente";
     }
     
-    @PutMapping ("educación/editar/{id}")
+    @PutMapping ("educación/{id}")
     public Educación editEducación (@PathVariable Long id,
-                                @RequestParam("título") String nuevoTítulo,
+                                @RequestParam("titulo") String nuevoTitulo,
                                 @RequestParam ("lugar") String nuevoLugar,
-                                @RequestParam ("duración") String nuevoDuración){
+                                @RequestParam ("duracion") String nuevoDuracion){
         
         Educación edu = interEducación.findEducación(id);
-        edu.setTítulo(nuevoTítulo);
+        edu.setTitulo(nuevoTitulo);
         edu.setLugar(nuevoLugar);
-        edu.setDuración(nuevoDuración);
+        edu.setDuracion(nuevoDuracion);
         
         
         interEducación.saveEducación(edu);

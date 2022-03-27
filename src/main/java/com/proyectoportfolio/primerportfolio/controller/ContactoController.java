@@ -8,6 +8,7 @@ import com.proyectoportfolio.primerportfolio.service.IContactoService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class ContactoController {
     @Autowired
     private IContactoService interContacto;
@@ -37,7 +38,7 @@ public class ContactoController {
    Contacto conta = interContacto.findContacto(id);
    return conta;}
     
-    @PostMapping ("/agregar/contactos")
+    @PostMapping ("/contactos")
     public String createContacto (@RequestBody Contacto conta){
         interContacto.saveContacto(conta);
         return "El contacto fue creado correctamente";
@@ -53,7 +54,7 @@ public class ContactoController {
     public Contacto editContacto (@PathVariable Long id,
                                 @RequestParam("mail") String nuevoMail,
                                 @RequestParam("facebook") String nuevoFacebook,
-                                @RequestParam("whatsapp") int nuevoWhatsapp,
+                                @RequestParam("whatsapp") Long nuevoWhatsapp,
                                 @RequestParam("twitter") String nuevoTwitter,
                                 @RequestParam("linkedIn") String nuevoLinkedIn,
                                 @RequestParam ("instagram") String nuevoInstagram){

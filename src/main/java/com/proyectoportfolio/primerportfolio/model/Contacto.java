@@ -25,7 +25,7 @@ public class Contacto implements Serializable {
     private Long id;
     private String mail;
     private String facebook;
-    private int whatsapp;
+    private Long whatsapp;
     private String twitter;
     private String linkedIn;
     private String instagram;
@@ -38,7 +38,7 @@ public class Contacto implements Serializable {
     public Contacto() {
     
 }
-    public Contacto(String mail, String facebook, int whatsapp, 
+    public Contacto(String mail, String facebook, Long whatsapp, 
                     String twitter, String linkedIn, String instagram){
         this.mail = mail;
         this.facebook = facebook;

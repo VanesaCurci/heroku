@@ -8,6 +8,7 @@ import com.proyectoportfolio.primerportfolio.service.IIdiomaService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class IdiomaController {
     @Autowired
     private IIdiomaService interIdioma;
@@ -37,7 +38,7 @@ public class IdiomaController {
    Idioma idi = interIdioma.findIdioma(id);
    return idi;}
     
-    @PostMapping ("/agregar/idiomas")
+    @PostMapping ("/idiomas")
     public String createIdioma (@RequestBody Idioma idi){
         interIdioma.saveIdioma(idi);
         return "El idioma fue creado correctamente";
@@ -49,7 +50,7 @@ public class IdiomaController {
         return "El idioma fue eliminado correctamente";
     }
     
-    @PutMapping ("idiomas/editar/{id}")
+    @PutMapping ("idiomas/{id}")
     public Idioma editProyecto (@PathVariable Long id,
                                 @RequestParam("nombre") String nuevoNombre,
                                 @RequestParam ("nivel") Long nuevoNivel){
