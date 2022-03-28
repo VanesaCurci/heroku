@@ -45,6 +45,7 @@ public class Persona implements Serializable {
     
    @JoinColumn(name = "id_contacto")
    @OneToOne(fetch = FetchType.LAZY)
+   @JsonBackReference
    private Contacto contacto;
    
    @ManyToOne

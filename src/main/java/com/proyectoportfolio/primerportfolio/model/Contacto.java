@@ -1,6 +1,8 @@
 
 package com.proyectoportfolio.primerportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 
@@ -32,6 +34,7 @@ public class Contacto implements Serializable {
     
    @OneToOne(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true, 
               fetch=FetchType.LAZY)
+   @JsonManagedReference
     private Persona persona;
 
     
