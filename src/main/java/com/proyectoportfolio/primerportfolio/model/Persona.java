@@ -64,7 +64,7 @@ public class Persona implements Serializable {
            inverseJoinColumns = {@JoinColumn(name = "tecnología_id")}
                  
    )
-   @JsonIgnoreProperties(value="personas")
+   
    private Set<Tecnología>tecnologías;
    
    @ManyToMany( cascade = {
